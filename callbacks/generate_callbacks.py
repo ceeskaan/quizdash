@@ -5,11 +5,10 @@ from dash import html, Input, Output, State
 
 import feffery_antd_components as fac
 
-from app import app
 from components.quiz_generator import LLM_generate_quiz
 
 
-@app.callback(
+@dash.callback(
     Output("quiz-storage", "data"),
     Output('generate-quiz-button', 'loading'),
     Output("generate-modal", "visible"),
@@ -102,7 +101,7 @@ def generate_quiz(
         return dash.no_update, dash.no_update, False, dash.no_update, dash.no_update, dash.no_update, dash.no_update
     
 
-@app.callback(
+@dash.callback(
     Output("home-input-storage", "data"),
     Input("home-quiz-button", "nClicks"),
     Input("home-input", "nSubmit"),
@@ -128,7 +127,7 @@ def save_home_topic(n_clicks: int, n_submit: int, topic: str) -> str:
         return dash.no_update
     
     
-@app.callback(
+@dash.callback(
     Output("topic-input", "value"),
     Input("home-input-storage", "data"),
 )
@@ -162,7 +161,7 @@ def extract_text_from_pdf(pdf_content):
     return text
 
 
-@app.callback(
+@dash.callback(
     Output('pdf-input', 'value'),
     Output('pdf-input', 'disabled'),
     Input('upload-pdf', 'contents'),

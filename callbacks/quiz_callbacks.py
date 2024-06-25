@@ -2,11 +2,10 @@ from urllib.parse import parse_qs
 import dash
 from dash import ctx, Input, Output, ALL, MATCH, State, html
 
-from app import app
 from components.quiz import quiz, quiz_list, quiz_results
 
 
-@app.callback(
+@dash.callback(
     Output('quiz-collection', 'children'),
     Input("quiz-storage", "data"),
 )
@@ -24,7 +23,7 @@ def show_quiz_overview(data: list[dict]) -> html.Div:
     return quiz_list(data)
 
 
-@app.callback(
+@dash.callback(
     Output({"index": MATCH, "type": "feedback"}, "children"),
     Output({"index": MATCH, "type": "option-cards"}, "value"),
     Output({"index": MATCH, "type": "answer-status"}, "type"),
@@ -62,7 +61,7 @@ def answer_verification(answer: str, data: list[dict], url: str) -> tuple[str, l
         return "Woops, that's not correct!", [answer, correct_answer], "error", explanation
     
 
-@app.callback(
+@dash.callback(
     Output({"index": MATCH, "type": "answer"}, "style"),    
     Output({"index": MATCH, "type": "next-question-button"}, "style"),    
     Output({"index": MATCH, "type": "tutor-button"}, "style"),    
@@ -87,7 +86,7 @@ def display_content_after_answer(value: str) -> list:
         return [{"display": "none"}] * 3 + [False]
     
 
-@app.callback(
+@dash.callback(
     Output('tutor-modal', 'visible'),
     Input({"index": ALL, "type": "tutor-button"}, "nClicks"),
     prevent_initial_call=True
@@ -109,7 +108,7 @@ def open_tutor_modal(n_clicks: str) -> bool:
         return False
 
 
-@app.callback(
+@dash.callback(
     Output('question-tabs', 'activeKey'),
     Input({"index": ALL, "type": "next-question-button"}, "nClicks"),
     prevent_initial_call=True
@@ -132,7 +131,7 @@ def next_question(n_clicks: list[int]) -> str:
     return str(triggered_index + 1)
  
 
-@app.callback(
+@dash.callback(
     Output("results", "children"),
     Input({"index": ALL, "type": "feedback"}, "children"),
     Input('url', 'search'),
@@ -158,7 +157,7 @@ def show_results(feedback: list[str], url: str) -> html.Div:
     return quiz_results(quiz_id, feedback)
 
 
-@app.callback(
+@dash.callback(
     Output("active_quiz", "children"),
     Input('url', 'search'),
     Input("quiz-storage", "data")

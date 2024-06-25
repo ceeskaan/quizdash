@@ -1,13 +1,13 @@
 from dash import Input, Output, State
+import dash
 
-from app import app
 from components.tutor import render_textbox, chain_with_message_history
 
 
 # Much of this code is borrowed from: https://github.com/plotly/dash-sample-apps/blob/main/apps/dash-gpt3-chatbot/app.py
 
 
-@app.callback(
+@dash.callback(
     Output("display-conversation", "children"), 
     Input("store-conversation", "data")
 )
@@ -18,7 +18,7 @@ def update_display(chat_history):
     ]
 
 
-@app.callback(
+@dash.callback(
     Output("user-input", "value"),
     Input("submit", "nClicks"), 
     Input("user-input", "nSubmit"),
@@ -27,7 +27,7 @@ def clear_input(n_clicks, n_submit):
     return ""
 
 
-@app.callback(
+@dash.callback(
     Output("submit", "loading", allow_duplicate=True), 
     Input("user-input", "nSubmit"),
     prevent_initial_call=True
@@ -36,7 +36,7 @@ def spinner_when_nsubmit(n_submit):
     return True
 
 
-@app.callback(
+@dash.callback(
     Output("store-conversation", "data"), 
     Output('submit', 'loading'),
     Input("submit", "nClicks"), 

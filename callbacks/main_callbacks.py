@@ -1,9 +1,8 @@
 from dash import Input, Output
+import dash
 
-from app import app
 
-
-@app.callback(
+@dash.callback(
     Output('nav-drawer', 'visible'),
     Input('hamburger-menu', 'nClicks'),
     prevent_initial_call=True
@@ -22,7 +21,7 @@ def open_navigation_drawer(n_clicks: int) -> bool:
     return True
 
 
-@app.callback(
+@dash.callback(
     Output('menu-horizontal', 'currentKey'),
     Output('menu-inline', 'currentKey'),
     Input('_pages_location', 'pathname')
