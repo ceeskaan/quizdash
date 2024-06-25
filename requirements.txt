@@ -1,0 +1,8 @@
+dash
+langchain
+langchain_community
+langchain_core
+langchain_openai
+feffery_antd_components
+feffery_utils_components
+PyMuPDF
