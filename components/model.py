@@ -9,8 +9,8 @@ load_dotenv(dotenv_path)
 # Any LLM (Groq and Ollama should also work)
 llm = ChatOpenAI(
     model_name="databricks-dbrx-instruct", 
-    openai_api_key=os.getenv("DBRX_API_KEY"),
-    openai_api_base=os.getenv("DBRX_BASE_URL")
+    openai_api_key="123", #os.getenv("DBRX_API_KEY")
+    openai_api_base="123", #os.getenv("DBRX_BASE_URL")
 )
 
 
