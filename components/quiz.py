@@ -3,7 +3,18 @@ from dash import html, dcc
 import feffery_antd_components as fac
 
 
-def quiz(data, hide=False):
+def quiz(data: dict, hide: bool = False) -> fac.AntdTabs:
+    """
+    Generates a quiz interface with questions, options, and navigation.
+
+    Args:
+        data (dict): A dictionary containing the quiz title and a list of questions.
+        hide (bool, optional): Whether to hide the quiz initially. Defaults to False.
+
+    Returns:
+        fac.AntdTabs: A Tabs component with each question as a tab and a results tab.
+    """
+    
     return fac.AntdTabs(
         [
             fac.AntdTabPane(
@@ -92,7 +103,16 @@ def quiz(data, hide=False):
     )
 
 
-def quiz_list(data):
+def quiz_list(data: list[dict]) -> list[html.Div]:
+    """
+    Generates a list of quizzes with their details and links to start each quiz.
+
+    Args:
+        data (list[dict]): A list of dictionaries containing quiz details.
+
+    Returns:
+        list[html.Div]: A list of Divs, each containing information about a quiz and a link to start it.
+    """
 
     if len(data) == 0:
         return html.Div("You have not generated any quizzes yet!", className="quiz-link-container")
@@ -116,7 +136,17 @@ def quiz_list(data):
     ]
 
 
-def quiz_results(quiz_id, feedback):
+def quiz_results(quiz_id: str, feedback: list[str]) -> html.Div:
+    """
+    Generates the quiz results summary with a score and feedback.
+
+    Args:
+        quiz_id (str): The ID of the quiz.
+        feedback (list[str]): List of feedback messages for each quiz question.
+
+    Returns:
+        html.Div: A Div containing the quiz results, including score and feedback.
+    """
 
     correct = feedback.count("Awesome, Great Job!")
     incorrect = feedback.count("Woops, that's not correct!")

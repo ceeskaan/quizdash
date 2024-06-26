@@ -3,7 +3,15 @@ from dash import html
 import feffery_antd_components as fac
 
 
-def render_chat_input():
+def render_chat_input() -> html.Div:
+    """
+    Renders a chat input interface with a text area and a submit button.
+
+    Returns:
+        html.Div: A Div containing an AntdInput text area and an AntdButton 
+        for submitting messages, styled and arranged within the div.
+    """
+    
     return html.Div(
         [
             fac.AntdInput(

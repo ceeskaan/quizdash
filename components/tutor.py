@@ -8,6 +8,20 @@ from components.model import llm
 
 
 def render_textbox(text:str, box:str = "AI") -> html.Div:
+    """
+    Renders a textbox for displaying messages from either a human or an AI.
+
+    Args:
+        text (str): The text to display in the textbox.
+        box (str, optional): The type of textbox to render ("human" or "AI"). Defaults to "AI".
+
+    Returns:
+        html.Div: A Div containing the formatted text message.
+    
+    Raises:
+        ValueError: If the `box` argument is not "human" or "AI".
+    """
+        
     text = text.replace(f"ChatBot:", "").replace("Human:", "")
 
     if box == "human":

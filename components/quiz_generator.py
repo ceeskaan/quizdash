@@ -24,7 +24,19 @@ class Quiz(BaseModel):
 parser = PydanticOutputParser(pydantic_object=Quiz)
 
 
-def LLM_generate_quiz(topic, n_questions, n_options, difficulty):
+def LLM_generate_quiz(topic: str, n_questions: int, n_options: int, difficulty: str) -> dict:
+    """
+    Generates a quiz using an LLM based on the given topic, number of questions, options, and difficulty level.
+
+    Args:
+        topic (str): The topic for the quiz.
+        n_questions (int): The number of questions to generate.
+        n_options (int): The number of options per question.
+        difficulty (str): The difficulty level of the quiz.
+
+    Returns:
+        dict: A dictionary containing the generated quiz with questions, options, correct answers, and explanations.
+    """
 
     prompt = PromptTemplate(
         template="""You are an expert Quiz Generator. 
