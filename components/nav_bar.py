@@ -81,17 +81,15 @@ nav_bar = html.Div(
                 # Github button
                 fac.AntdButton(
                     fac.AntdIcon(icon="antd-github"),
+                    href="https://github.com/ceeskaan/quizdash",
                     shape='circle',
                     type="text",
                     size="large"
                 ),
 
                 # DBRX credentials verifier
-                fac.AntdTooltip(
-                    verify_DBRX_credentials(),
-                    title="Clone the respository and add your DBRX credentials to the .env file to get the full quizdash experience!"
-                ),
-
+                verify_DBRX_credentials(),
+            
                 # Hamburger menu (opens vertical nav-bar in drawer)
                 fac.AntdButton(
                     fac.AntdIcon(icon="antd-menu"),
