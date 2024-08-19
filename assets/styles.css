@@ -365,6 +365,7 @@ textarea {
 .ant-alert{
     align-items: flex-start;
     justify-content: center;
+    width: 100%;
 }
 
 .ant-alert-success .ant-alert-icon{

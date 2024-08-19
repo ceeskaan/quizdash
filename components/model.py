@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 
-# Any LLM (Groq and Ollama should also work)
+# DBRX LLM
 llm = ChatOpenAI(
     model_name="databricks-dbrx-instruct", 
     openai_api_key=os.getenv("DBRX_API_KEY"),

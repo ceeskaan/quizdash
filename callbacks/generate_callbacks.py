@@ -73,11 +73,17 @@ def generate_quiz(
         else:
             final_topic = f"The following text: '{text}'" if active_tab == "Text" or active_tab == "Upload" else topic
 
-            try:
-                quiz_dict = LLM_generate_quiz(final_topic, n_questions, n_options, difficulty)
-            except:
-                return dash.no_update, False, True, "AI features are disabled, as there are no valid DBRX credentials. Clone go to the github and follow the instructions to get the full Quizdash experience!", dash.no_update, dash.no_update, dash.no_update
-            
+            attempt = 0
+            max_attempts = 3
+            while attempt < max_attempts:
+                try:
+                    quiz_dict = LLM_generate_quiz(final_topic, n_questions, n_options, difficulty)
+                    break
+                except:
+                    attempt += 1
+                    if attempt == max_attempts:
+                        return dash.no_update, False, True, "Woops! Something went wrong, try again!", dash.no_update, dash.no_update, dash.no_update
+                
             data.append(quiz_dict)
 
             modal_content = html.Div(

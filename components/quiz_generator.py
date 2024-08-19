@@ -40,8 +40,8 @@ def LLM_generate_quiz(topic: str, n_questions: int, n_options: int, difficulty: 
 
     prompt = PromptTemplate(
         template="""You are an expert Quiz Generator. 
-            Generate a {difficulty} multiple-choice quiz, give me {n_questions} questions and answers about {topic}.
-            Each question should have {n_options} options. Make 100%% sure that there is only one correct option and that this is one of the {n_options} options.
+            Generate a multiple-choice quiz of {difficulty} difficulty, give me {n_questions} questions and answers about {topic}.
+            Each question should have exactly {n_options} options. Make 100%% sure that there is only one correct option and that this is one of the {n_options} options.
             With every question, also give a brief explanation on why this is the right answer and the others are not.
             Give the quiz a title based on the topic. \n{format_instructions}\n""",
         input_variables=["topic", "n_questions", "n_options", "difficulty"],
@@ -50,5 +50,5 @@ def LLM_generate_quiz(topic: str, n_questions: int, n_options: int, difficulty: 
 
     chain = prompt | llm | parser
     output = chain.invoke({"topic": topic, "n_questions": n_questions, "n_options": n_options, "difficulty": difficulty}).dict()
-    
+    print(output)
     return output

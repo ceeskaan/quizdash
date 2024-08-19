@@ -82,7 +82,7 @@ def quiz(data: dict, hide: bool = False) -> fac.AntdTabs:
                         
                         html.Div(
                             [
-                                fac.AntdButton("Next question", type="primary", id={"index": index, "type": "next-question-button"}),
+                                fac.AntdButton("View results" if index == (len(data["quiz"]) - 1) else "Next Question", type="primary", id={"index": index, "type": "next-question-button"}),
                                 fac.AntdButton("Need help?", id={"index": index, "type": "tutor-button"})
                             ],
                             className="quiz-footer"
