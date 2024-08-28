@@ -50,5 +50,5 @@ def LLM_generate_quiz(topic: str, n_questions: int, n_options: int, difficulty: 
 
     chain = prompt | llm | parser
     output = chain.invoke({"topic": topic, "n_questions": n_questions, "n_options": n_options, "difficulty": difficulty}).dict()
-    print(output)
+
     return output
