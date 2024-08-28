@@ -1,16 +1,14 @@
 import os
 from dotenv import load_dotenv, find_dotenv
 
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 
-# DBRX LLM
-llm = ChatOpenAI(
-    model_name="databricks-dbrx-instruct", 
-    openai_api_key=os.getenv("DBRX_API_KEY"),
-    openai_api_base=os.getenv("DBRX_BASE_URL")
+llm = ChatGroq(
+    api_key = os.getenv("GROQ_API_KEY"),
+    model="llama3-70b-8192"
 )
 
 

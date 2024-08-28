@@ -20,6 +20,9 @@ app = dash.Dash(
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, ''initial-scale=1'}],
 )
 
+app.title = "Quizdash"
+server = app.server
+
 
 with open('data/example_quiz.json') as file:
     example_quiz = json.load(file)
@@ -63,9 +66,8 @@ app.layout = html.Div(
 )
 
 
-app.title = "Quizdash"
-server = app.server
+
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)

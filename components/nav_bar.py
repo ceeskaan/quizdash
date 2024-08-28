@@ -75,7 +75,7 @@ nav_bar = html.Div(
                         type="text",
                         size="large"
                     ),
-                    title="This app is a submission to the Databricks LLM (DBRX) Dash App Building Challenge"
+                    title="This app was a submission to the Databricks LLM (DBRX) Dash App Building Challenge"
                 ),
                 
                 # Github button
@@ -83,15 +83,13 @@ nav_bar = html.Div(
                     fac.AntdIcon(icon="antd-github"),
                     shape='circle',
                     type="text",
-                    size="large"
+                    size="large",
+                    href="https://github.com/ceeskaan/quizdash"
                 ),
 
                 # DBRX credentials verifier
-                fac.AntdTooltip(
-                    verify_DBRX_credentials(),
-                    title="Clone the respository and add your DBRX credentials to the .env file to get the full quizdash experience!"
-                ),
-
+                verify_DBRX_credentials(),
+             
                 # Hamburger menu (opens vertical nav-bar in drawer)
                 fac.AntdButton(
                     fac.AntdIcon(icon="antd-menu"),

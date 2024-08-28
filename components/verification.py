@@ -20,10 +20,10 @@ def verify_DBRX_credentials() -> fac.AntdButton:
     except Exception as e:
         icon = fac.AntdIcon(icon="antd-close")
         danger = True
-        print("Invalid DBRX credentials, add DBRX_API_KEY and DBRX_BASE_URL in .env file!")
+        print("API key error")
     
     return fac.AntdButton(
-        "⠀DBRX Token",
+        "⠀API Key",
         icon=icon,
         id="token-button",
         type="text",
