@@ -3,9 +3,9 @@ import feffery_antd_components as fac
 from components.model import llm
 
 
-def verify_DBRX_credentials() -> fac.AntdButton:
+def verify_API_credentials() -> fac.AntdButton:
     """
-    Verifies DBRX credentials and returns an AntdButton indicating the status.
+    Verifies API credentials and returns an AntdButton indicating the status.
 
     Returns:
         fac.AntdButton: A button with a check icon if credentials are valid, 
