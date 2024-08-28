@@ -2,7 +2,7 @@ from dash import html, dcc
 
 import feffery_antd_components as fac
 
-from components.verification import verify_DBRX_credentials
+from components.verification import verify_API_credentials
 
 
 # Items (links) in nav-bar, used for horizontal and vertical (small screen) nav bar
@@ -88,7 +88,7 @@ nav_bar = html.Div(
                 ),
 
                 # DBRX credentials verifier
-                verify_DBRX_credentials(),
+                verify_API_credentials(),
              
                 # Hamburger menu (opens vertical nav-bar in drawer)
                 fac.AntdButton(
